@@ -43,6 +43,10 @@ const getNextMessages = (maxCount = 10) => {
     return RnWebim.getLastMessages(maxCount)
 }
 
+const sendFile = (uri = '', name = '', mime = '', extension = '') => {
+    return RnWebim.sendFile(uri, name, mime, extension)
+}
+
 export default {
     resume,
     pause,
@@ -50,6 +54,7 @@ export default {
     sendMessage,
     getLastMessages,
     getNextMessages,
+    sendFile,
     EVENTS,
     onEvent,
 };
