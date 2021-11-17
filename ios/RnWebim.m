@@ -41,12 +41,16 @@ RCT_EXTERN_METHOD(getNextMessages:
                   withRejecter: (RCTPromiseRejectBlock)reject
 )
 
-
+RCT_EXTERN_METHOD(sendFile:
+                  (NSString *)uri
+                  withName: (NSString *)name
+                  withMime: (NSString *)mime
+                  withExtension: (NSString *)extension
+                  withResolver: (RCTPromiseResolveBlock)resolve
+                  withRejecter: (RCTPromiseRejectBlock)reject
+)
 
 RCT_EXTERN_METHOD(supportedEvents)
 
 
 @end
-
-
-
