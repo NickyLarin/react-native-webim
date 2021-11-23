@@ -47,6 +47,14 @@ const sendFile = (uri = '', name = '', mime = '', extension = '') => {
     return RnWebim.sendFile(uri, name, mime, extension)
 }
 
+const getUnreadByVisitorMessageCount = () => {
+    return RnWebim.getUnreadByVisitorMessageCount()
+}
+
+const setChatRead = () => {
+    return RnWebim.setChatRead()
+}
+
 export default {
     resume,
     pause,
@@ -55,6 +63,8 @@ export default {
     getLastMessages,
     getNextMessages,
     sendFile,
+    getUnreadByVisitorMessageCount,
+    setChatRead,
     EVENTS,
     onEvent,
 };
