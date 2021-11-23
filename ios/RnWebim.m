@@ -50,6 +50,16 @@ RCT_EXTERN_METHOD(sendFile:
                   withRejecter: (RCTPromiseRejectBlock)reject
 )
 
+RCT_EXTERN_METHOD(getUnreadByVisitorMessageCount:
+                  (RCTPromiseResolveBlock)resolve
+                  withRejecter: (RCTPromiseRejectBlock)reject
+)
+
+RCT_EXTERN_METHOD(setChatRead:
+                  (RCTPromiseResolveBlock)resolve
+                  withRejecter: (RCTPromiseRejectBlock)reject
+)
+
 RCT_EXTERN_METHOD(supportedEvents)
 
 
