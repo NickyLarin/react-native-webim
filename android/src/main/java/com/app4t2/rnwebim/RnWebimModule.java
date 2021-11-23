@@ -262,4 +262,24 @@ public class RnWebimModule extends ReactContextBaseJavaModule {
     private ReactApplicationContext getContext() {
         return reactContext;
     }
+    
+    @ReactMethod
+    public void getUnreadByVisitorMessageCount(Promise promise) {
+        try {
+            int count = session.getStream().getUnreadByVisitorMessageCount();
+            promise.resolve(count);
+        } catch (Exception e) {
+            promise.reject("errorcode", "Getting count of unread messages error", e);
+        }
+    }
+
+    @ReactMethod
+    public void setChatRead(Promise promise) {
+        try {
+           session.getStream().setChatRead();
+            promise.resolve("success");
+        } catch (Exception e) {
+            promise.reject("errorcode", "Chat reading error", e);
+        }
+    }
 }
