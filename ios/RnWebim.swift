@@ -256,4 +256,46 @@ class RnWebim : RCTEventEmitter  {
             }
         } 
     }
+    
+    @objc
+    func getUnreadByVisitorMessageCount(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        withRejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+            DispatchQueue.main.async {
+                self.jsPromiseResolver = resolve;
+                self.jsPromiseRejecter = reject;
+          
+                do {
+                    let count = self.session?.getStream().getUnreadByVisitorMessageCount() 
+                    if (self.jsPromiseResolver != nil) {
+                        self.jsPromiseResolver!(count)
+                    }
+                } catch let error {
+                    if (self.jsPromiseRejecter != nil) {
+                        self.jsPromiseRejecter!("error","Send message error:", nil)
+                }
+            }
+        }
+    }
+    
+    @objc
+    func setChatRead(
+        _ resolve: @escaping RCTPromiseResolveBlock,
+        withRejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
+            DispatchQueue.main.async {
+                self.jsPromiseResolver = resolve;
+                self.jsPromiseRejecter = reject;
+          
+                do {
+                    try self.session?.getStream().setChatRead() 
+                    if (self.jsPromiseResolver != nil) {
+                        self.jsPromiseResolver!("success")
+                    }
+                } catch let error {
+                    if (self.jsPromiseRejecter != nil) {
+                        self.jsPromiseRejecter!("error","Send message error:", nil)
+                }
+            }
+        }
+    }
 }
