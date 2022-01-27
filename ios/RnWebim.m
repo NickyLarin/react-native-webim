@@ -18,8 +18,7 @@ RCT_EXTERN_METHOD(pause:
 )
 
 RCT_EXTERN_METHOD(destroy:
-                  (Bool *)clearData
-                  withResolver: (RCTPromiseResolveBlock)resolve
+                  (RCTPromiseResolveBlock)resolve
                   withRejecter: (RCTPromiseRejectBlock)reject
 )
 

@@ -27,8 +27,8 @@ const pause = () => {
     return RnWebim.pause()
 }
 
-const destroy = (clearData = false) => {
-    return RnWebim.destroy(clearData)
+const destroy = () => {
+    return RnWebim.destroy()
 }
 
 const sendMessage = (text = '') => {

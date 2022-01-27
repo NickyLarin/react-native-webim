@@ -112,15 +112,11 @@ public class RnWebimModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void destroy(Boolean clearData, Promise promise) {
+    public void destroy(Promise promise) {
         if (session != null) {
             session.getStream().closeChat();
             tracker.destroy();
-            if (clearData) {
-                session.destroyWithClearVisitorData();
-            } else {
-                session.destroy();
-            }
+            session.destroy();
             session = null;
         }
         promise.resolve(null);

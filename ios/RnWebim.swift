@@ -118,8 +118,7 @@ class RnWebim : RCTEventEmitter  {
     
     @objc
     func destroy(
-        _ clearData: Bool,
-        withResolver resolve: @escaping RCTPromiseResolveBlock,
+        _ resolve: @escaping RCTPromiseResolveBlock,
         withRejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         
         DispatchQueue.main.async {
@@ -130,12 +129,7 @@ class RnWebim : RCTEventEmitter  {
                 do {
                     try self.session?.getStream().closeChat()
                     try self.tracker?.destroy()
-                    
-                    if (clearData){
-                        try self.session?.destroyWithClearVisitorData()
-                    } else {
-                        try self.session?.destroy()
-                    }
+                    try self.session?.destroy()
                     
                     self.session = nil;
                 }
