@@ -8,6 +8,7 @@
 
 RCT_EXTERN_METHOD(resume:
                   (NSDictionary *)params
+                  withAppVersion: (NSString *)appVersion
                   withResolver: (RCTPromiseResolveBlock)resolve
                   withRejecter: (RCTPromiseRejectBlock)reject
 )

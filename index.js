@@ -16,11 +16,11 @@ const onEvent = (event, callback) => {
     return () => eventEmitter.removeListener(event, callback)
 }
 
-const resume = (params = {}) => {
+const resume = (params = {}, appVersion) => {
     return RnWebim.resume({
         ...params,
         userFields: params.userFields ? JSON.stringify(params.userFields) : null,
-    })
+    }, appVersion)
 }
 
 const pause = () => {

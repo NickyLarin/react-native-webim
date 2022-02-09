@@ -26,13 +26,14 @@ class RnWebim : RCTEventEmitter  {
     
     
     func build(
-        accountName: String, location: String, userFields: String?) -> Void {
+        accountName: String, location: String, userFields: String?, appVersion: String) -> Void {
         do {
             let logger = RnWebimLogger();
-            
-          
-            
-            var builder = Webim.newSessionBuilder().set(accountName: accountName).set(location: location).set(webimLogger: logger, verbosityLevel: SessionBuilder.WebimLoggerVerbosityLevel.verbose)
+            var builder = Webim.newSessionBuilder()
+                .set(accountName: accountName)
+                .set(location: location)
+                .set(webimLogger: logger, verbosityLevel: SessionBuilder.WebimLoggerVerbosityLevel.verbose)
+                .set(appVersion: appVersion);
             
             if (userFields != nil){
                 builder = builder.set(visitorFieldsJSONString: userFields!);
@@ -47,6 +48,7 @@ class RnWebim : RCTEventEmitter  {
     @objc
     func resume(
         _ params: NSDictionary?,
+        withAppVersion appVersion: NSString,
         withResolver resolve: @escaping RCTPromiseResolveBlock,
         withRejecter reject: @escaping RCTPromiseRejectBlock) -> Void {
         
@@ -59,7 +61,7 @@ class RnWebim : RCTEventEmitter  {
             let userFields = params?.value(forKey: "userFields");
             
             if (self.session == nil){
-                self.build(accountName: accountName as! String, location: location as! String, userFields: userFields as? String);
+                self.build(accountName: accountName as! String, location: location as! String, userFields: userFields as? String, appVersion: appVersion as! String);
             }
             
             if (self.session == nil) {

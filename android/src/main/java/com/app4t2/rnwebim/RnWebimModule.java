@@ -64,7 +64,7 @@ public class RnWebimModule extends ReactContextBaseJavaModule {
     }
 
 
-    private void build(String accountName, String location, String userFields) {
+    private void build(String accountName, String location, String userFields, String appVersion) {
         Webim.SessionBuilder builder = Webim.newSessionBuilder().setContext(this.reactContext)
                 .setAccountName(accountName).setLocation(location)
                 .setLogger(new WebimLog() {
@@ -72,7 +72,9 @@ public class RnWebimModule extends ReactContextBaseJavaModule {
                     public void log(String log) {
                         Log.i("WEBIM LOG", log);
                     }
-                }, Webim.SessionBuilder.WebimLogVerbosityLevel.VERBOSE);
+                }, Webim.SessionBuilder.WebimLogVerbosityLevel.VERBOSE)
+                .setAppVersion(appVersion);
+                
         if (userFields != null) {
             builder.setVisitorFieldsJson(userFields);
         }
@@ -80,14 +82,14 @@ public class RnWebimModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void resume(ReadableMap builderData, Promise promise) {
+    public void resume(ReadableMap builderData, String appVersion, Promise promise) {
 
         String accountName = builderData.getString("accountName");
         String location = builderData.getString("location");
         String userFields = builderData.getString("userFields");
 
         if (session == null) {
-            build(accountName, location, userFields);
+            build(accountName, location, userFields, appVersion);
         }
 
         if (session == null) {
