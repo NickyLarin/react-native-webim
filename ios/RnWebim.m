@@ -62,5 +62,8 @@ RCT_EXTERN_METHOD(setChatRead:
 
 RCT_EXTERN_METHOD(supportedEvents)
 
++ (BOOL) requiresMainQueueSetup {
+  return YES;
+}
 
 @end
