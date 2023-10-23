@@ -38,9 +38,9 @@ import android.webkit.MimeTypeMap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.webimapp.android.sdk.WebimError;
-import com.webimapp.android.sdk.MessageStream;
-import com.webimapp.android.sdk.Message;
+import ru.webim.android.sdk.WebimError;
+import ru.webim.android.sdk.MessageStream;
+import ru.webim.android.sdk.Message;
 
 public class RnWebimModule extends ReactContextBaseJavaModule {
 
